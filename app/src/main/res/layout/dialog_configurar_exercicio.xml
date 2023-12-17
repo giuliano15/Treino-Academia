@@ -2,110 +2,202 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:padding="16dp">
 
-    <TextView
-    android:id="@+id/title"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:textSize="18dp"
-    android:textStyle="bold"
-    android:textColor="@color/colorPrimary"
-    android:text="CONFIGURAR TREINO" />
-
-    <View
-        android:id="@+id/dividerView"
+    <ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
-        android:background="#EE9D23"/>
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimary"
+                android:text="CONFIGURAR TREINO" />
+
+            <View
+                android:id="@+id/dividerView"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:background="#EE9D23"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="20dp"
+                android:text="Adicionar Treino" />
 
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Adicionar Treino" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayoutNomeTreino"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/dividerView">
 
-    <EditText
-        android:id="@+id/editTextNomeTreino"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Digite um nome para o treino"/>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextNomeTreino"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Digite um nome para o treino"
+                    android:inputType="text|textEmailAddress" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Adicionar Carga" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="20dp"
+                android:text="Adicionar Carga" />
 
-    <EditText
-        android:id="@+id/editTextCarga"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="number"
-        android:hint="Carga"/>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayoutTextCarga"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayoutNomeTreino">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Adicionar Tempo" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextCarga"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Digite a quantidade de carga "
+                    android:inputType="number" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-    <EditText
-        android:id="@+id/editTextTempo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="number"
-        android:hint="Digite Tempo em Segundos"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="20dp"
+                android:text="Adicionar Tempo" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Adicionar Quantidade de Séries" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayoutTextTempo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/title">
 
-    <EditText
-        android:id="@+id/editTextQuantidadeSeries"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="number"
-        android:hint="Quantidade de Séries"/>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextTempo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Digite Tempo em Segundos "
+                    android:inputType="number" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Adicionar Observação" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="20dp"
+                android:text="Adicionar Quantidade de Séries" />
 
-    <EditText
-        android:id="@+id/editTextObservacao"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Observação"/>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayoutTextQuantidadeSeries"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/title">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="end">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextQuantidadeSeries"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Digite quantidade de Séries"
+                    android:inputType="number" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-        <Button
-            android:id="@+id/btnCancel"
-            style="@style/ButtonSquare"
-            android:layout_width="wrap_content"
-            android:layout_height="48dp"
-            android:text="Cancelar"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
-            android:textSize="16sp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="20dp"
+                android:text="Adicionar Observação" />
 
-        <Button
-            android:id="@+id/btnAdd"
-            style="@style/ButtonSquare"
-            android:layout_width="wrap_content"
-            android:layout_height="48dp"
-            android:text="Adicionar"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
-            android:textSize="16sp"/>
-    </LinearLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayoutTextObservacao"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/title">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextObservacao"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Digite uma observação "
+                    android:inputType="text|textEmailAddress" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="end">
+
+                <Button
+                    android:id="@+id/btnCancel"
+                    style="@style/ButtonSquare"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:text="Cancelar"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"/>
+
+                <Button
+                    android:id="@+id/btnAdd"
+                    style="@style/ButtonSquare"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:text="Adicionar"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </LinearLayout>
