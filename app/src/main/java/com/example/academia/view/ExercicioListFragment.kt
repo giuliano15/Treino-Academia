@@ -3,7 +3,6 @@ package com.example.academia.view
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuInflater
@@ -12,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.addCallback
 import androidx.appcompat.app.AlertDialog
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -20,12 +20,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.academia.OnExercicioClickListener
 import com.example.academia.R
 import com.example.academia.adapters.ExercicioListAdapter
-import com.example.academia.adapters.TreinoListAdapter
 import com.example.academia.databinding.FragmentExercicioListBinding
 import com.example.academia.model.Exercicio
 import com.example.academia.model.Treino
 import com.example.academia.util.DateUtils
-import com.example.academia.util.DialogConfigExercicio
 import com.example.academia.viewModel.DetalheExercicioViewModel
 import com.example.academia.viewModel.ExercicioViewModel
 import com.google.firebase.auth.FirebaseAuth
@@ -131,7 +129,7 @@ class ExercicioListFragment : Fragment(), OnExercicioClickListener {
         DialogConfigExercicio.showConfigurarExercicioDialog(
             requireContext(),
             "Configurar Treino",
-            { nomeTreino,carga, tempo, quantidadeSeries, observacao,  ->
+            { nomeTreino, carga, tempo, quantidadeSeries, observacao ->
                 // Crie um novo treino com os detalhes fornecidos
                 val detalheExercicio = detalheViewModel.detalhesExercicios.value?.find { it.nome == exercicio.nome
 
