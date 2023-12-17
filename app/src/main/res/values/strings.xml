@@ -1,0 +1,47 @@
+<resources>
+    <string name="app_name">Academia</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">Exercicios Rápidos</string>
+    <string name="second_fragment_label">Meus Treinos</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="exercicio_list_fragment_label">Exercicios Rápidos </string>
+    <string name="detalhes_exercicio_fragment_label">Detalhes Exercicios</string>
+
+    <string name="supino_sentado_na_maquina">
+         indicado para a realização de exercícios que trabalham a musculatura do bíceps,
+         deltoide, trapézio e peitoral
+     </string>
+    <string name="extensao_triceps">
+         Ele permite que seus braços girem naturalmente, reduzindo qualquer dor no pulso,
+         cotovelo ou ombro que você possa sentir em uma barra fixa.
+     </string>
+
+    <string name="rotacao_de_polia">
+         Esse treino visa especialmente a ativação do músculo infraespinhal e redondo menor.
+     </string>
+
+    <string name="elevacao_lateral_em_pe">
+         ideal para o fortalecimento dos músculos dos ombros além de melhorar a postura do atleta
+     </string>
+
+    <string name="esteira">
+         Melhora a força e a resistência dos membros superiores; Melhora da capacidade de estabilização da coluna; Promove ativação dos músculos abdominais, lombares e que envolvem o quadril
+     </string>
+
+    <string name="crucifixo_de_banco_reto">
+         trabalha as cabeças esternais dos seus principais músculos peitorais. Além de fortalecer os músculos do peito, também recrutam músculos deltoides, bíceps, tríceps, flexores do punho e braquial
+     </string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+
+</resources>

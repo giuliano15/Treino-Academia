@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/container_exercicio_list"
+    android:orientation="vertical"
+    tools:context=".view.ExercicioListFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/button_first"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:background="@color/colorPrimaryDark"
+            style="@style/ButtonSquare"
+            android:textSize="16dp"
+            android:textColor="@color/white"
+            android:layout_marginStart="2dp"
+            android:layout_marginEnd="2dp"
+            android:text="Escolha um exercicio"
+            app:layout_constraintBottom_toTopOf="@id/recyclerViewExercicios"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewExercicios"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="16dp"
+            android:layout_weight="1"
+            android:clipToPadding="false"
+            android:paddingTop="8dp"
+            android:paddingBottom="4dp"
+            android:scrollbarSize="12dp"
+            android:scrollbarThumbVertical="@color/design_default_color_on_primary"
+            android:scrollbarTrackVertical="@android:color/transparent"
+            app:layout_constraintBottom_toTopOf="@+id/button_second"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/button_first" />
+
+        <Button
+            android:id="@+id/button_second"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            style="@style/ButtonSquare"
+            android:paddingTop="8dp"
+            android:text="MEUS TREINOS"
+            android:textSize="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>

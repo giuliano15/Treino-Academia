@@ -1,0 +1,104 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="12dp"
+        app:cardCornerRadius="14dp"
+        app:cardElevation="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:orientation="horizontal">
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="5"> <!-- Adicionado layout_weight -->
+
+                <TextView
+                    android:id="@+id/nomeTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nome do Treino"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/descricaoTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Descrição do Treino"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/dateTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="data"
+                    android:textSize="14sp" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/carga"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="carga"
+                    android:inputType="number"
+                    android:textSize="12sp" />
+
+
+                <TextView
+                    android:id="@+id/qtdSerie"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="QtdeSerie"
+                    android:inputType="number"
+                    android:textSize="12sp" />
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <!-- Adicione uma ImageView para representar o ícone do menu da Toolbar -->
+                <ImageButton
+                    android:id="@+id/ic_menu"
+                    android:layout_width="20dp"
+                    android:layout_height="wrap_content"
+                    android:padding="2dp"
+                    android:src="@drawable/tres_pontos"
+                    android:layout_gravity="end|top"/> <!-- Adicionado layout_gravity para posicionar no canto superior direito -->
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <!-- Adicione outros elementos conforme necessário -->
+
+</LinearLayout>

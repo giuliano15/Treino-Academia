@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/FirstFragment">
+
+    <fragment
+        android:id="@+id/FirstFragment"
+        android:name="com.example.academia.view.ExercicioListFragment"
+        android:label="@string/first_fragment_label"
+        tools:layout="@layout/fragment_exercicio_list">
+
+        <action
+            android:id="@+id/action_FirstFragment_to_SecondFragment"
+            app:destination="@id/SecondFragment"
+            app:popUpTo="@id/FirstFragment"
+            app:popUpToInclusive="true"/>
+
+        <action
+            android:id="@+id/action_ExercicioListFragment_to_TreinoListFragment"
+            app:destination="@id/container_treino_list" />
+
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/SecondFragment"
+        android:name="com.example.academia.view.DetalhesExercicioFragment"
+        android:label="@string/second_fragment_label"
+        tools:layout="@layout/fragment_detalhes_exercicio">
+
+        <action
+            android:id="@+id/action_SecondFragment_to_FirstFragment"
+            app:destination="@id/FirstFragment"
+            app:popUpTo="@id/FirstFragment"
+            app:popUpToInclusive="true"/>
+    </fragment>
+
+
+
+    <fragment
+        android:id="@+id/container_treino_list"
+        android:name="com.example.academia.view.TreinoListFragment"
+        android:label="Meus Treinos"
+        tools:layout="@layout/fragment_treino_list">
+        <!-- Configurações específicas do fragmento DetalhesExercicioFragment -->
+        <action
+            android:id="@+id/action_container_treino_list_to_DetalhesExercicioFragment"
+            app:destination="@id/container_detalhes_exercicio"
+            app:popUpTo="@id/FirstFragment"
+            app:popUpToInclusive="true">
+        </action>
+
+        <action
+            android:id="@+id/action_FirstFragment_to_SecondFragment"
+            app:destination="@id/SecondFragment"
+            app:popUpTo="@id/FirstFragment"
+            app:popUpToInclusive="true">
+        </action>
+
+
+
+
+    </fragment>
+
+</navigation>

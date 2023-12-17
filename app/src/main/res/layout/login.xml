@@ -1,0 +1,74 @@
+<!-- res/layout/activity_cadastro.xml -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    >
+
+    <TextView
+        android:id="@+id/textViewEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Insira seu email:"
+        android:layout_marginTop="4dp"/>
+
+    <EditText
+        android:id="@+id/editTextEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewEmail"
+        android:layout_marginTop="10dp"
+        android:background="#CCCCCC"
+        android:padding="10dp"
+        android:hint="Email"/>
+
+    <TextView
+        android:id="@+id/textViewSenha"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Insira sua senha:"
+        android:layout_below="@id/editTextEmail"
+        android:layout_marginTop="20dp"/>
+
+    <EditText
+        android:id="@+id/editTextSenhaQuadrado"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewSenha"
+        android:layout_marginTop="10dp"
+        android:background="#CCCCCC"
+        android:padding="10dp"
+        android:hint="Senha"/>
+
+    <EditText
+        android:id="@+id/editTextSenhaRedondo"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editTextSenhaQuadrado"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/edittext_rounded_bg"
+        android:padding="10dp"
+        android:hint="Login"/>
+
+    <TextView
+        android:id="@+id/textViewEsqueciSenha"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Esqueci senha"
+        android:layout_below="@id/editTextSenhaRedondo"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:id="@+id/textViewCriarConta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Criar conta"
+        android:layout_below="@id/editTextSenhaRedondo"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="20dp"/>
+
+</RelativeLayout>

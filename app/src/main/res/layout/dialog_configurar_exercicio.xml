@@ -1,0 +1,67 @@
+<!-- res/layout/dialog_configurar_exercicio.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Adicionar Treino" />
+
+    <EditText
+        android:id="@+id/editTextNomeTreino"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Digite um nome para o treino"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Adicionar Carga" />
+
+    <EditText
+        android:id="@+id/editTextCarga"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:hint="Carga"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Adicionar Tempo" />
+
+    <EditText
+        android:id="@+id/editTextTempo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:hint="Digite Tempo em Segundos"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Adicionar Quantidade de Séries" />
+
+    <EditText
+        android:id="@+id/editTextQuantidadeSeries"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:hint="Quantidade de Séries"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Adicionar Oservação" />
+
+    <EditText
+        android:id="@+id/editTextObservacao"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Observação"/>
+
+
+</LinearLayout>
