@@ -87,6 +87,7 @@ class DetalhesExercicioFragment() : Fragment() {
         binding.buttonSalvarTempo.setOnClickListener {
 
             val intent = Intent(requireContext(),FinalizarTreino::class.java)
+            intent.putExtra("nomeTreino",treino.nomeTreino)
             startActivity(intent)
 
             Toast.makeText(

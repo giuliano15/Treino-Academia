@@ -20,11 +20,13 @@ class FinalizarTreino : AppCompatActivity() {
         ActivityFinalizarTreinoBinding.inflate(layoutInflater)
     }
 
+    private var nomeTreino: String? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        recuperarDadosIniciaisUsuarios()
+        // recuperarDadosIniciaisUsuarios()
 
         binding.btnRestart.setOnClickListener {
             // Navegar de volta para o fragmento de lista de treinos
@@ -35,33 +37,43 @@ class FinalizarTreino : AppCompatActivity() {
             firebaseAuth.signOut()
             finishAffinity()
         }
-    }
 
-    private fun recuperarDadosIniciaisUsuarios() {
-        val idUsuario = firebaseAuth.currentUser?.uid
-        if (idUsuario != null) {
+        nomeTreino = intent.getStringExtra("nomeTreino")
 
-            firestore
-                .collection("usuarios")
-                .document(idUsuario)
-                .get()
-                .addOnSuccessListener { documentSnapshot ->
+        val mensagem =
+            " ${nomeTreino ?: "teste"}"
+        binding.displayResult.text = mensagem
 
-                    val dadosUsuarios = documentSnapshot.data
-                    if (dadosUsuarios != null) {
-
-                        val nome = dadosUsuarios["nome"] as String
-
-                        val mensagem =
-                            "Parabéns, ${nome ?: ""}, você concluiu mais um treino com sucesso!"
-                        binding.displayResult.text = mensagem
-
-                    }
-
-                }
-
-        }
 
     }
 
+//    private fun recuperarDadosIniciaisUsuarios() {
+//        val idUsuario = firebaseAuth.currentUser?.uid
+//        if (idUsuario != null) {
+//
+//            firestore
+//                .collection("usuarios")
+//                .document(idUsuario)
+//                .get()
+//                .addOnSuccessListener { documentSnapshot ->
+//
+//                    val dadosUsuarios = documentSnapshot.data
+//                    if (dadosUsuarios != null) {
+//
+//                        val nome = dadosUsuarios["nome"] as String
+//
+//                        val mensagem =
+//                            " ${nomeTreino ?: ""}"
+//                        binding.displayResult.text = mensagem
+//
+//                    }
+//
+//                }
+//        }
+//    }
 }
+
+
+
+
+
