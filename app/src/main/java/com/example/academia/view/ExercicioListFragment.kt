@@ -76,10 +76,6 @@ class ExercicioListFragment : Fragment(), OnExercicioClickListener {
                 findNavController().navigate(R.id.action_ExercicioListFragment_to_TreinoListFragment)
 
             }
-        binding.buttonCount.setOnClickListener{
-            val intent = Intent(requireContext(),ContadorActivity::class.java)
-            startActivity(intent)
-        }
 
         detalheViewModel = ViewModelProvider(this).get(DetalheExercicioViewModel::class.java)
         exercicioViewModel = ViewModelProvider(this).get(ExercicioViewModel::class.java)
