@@ -12,7 +12,7 @@ class ExercicioRepository {
     private val exercicios: List<Exercicio> = listOf(
         Exercicio("Supino sentado na maquina", R.drawable.peito,"Peito","30" ),
         Exercicio("Extensão de triceps deitado", R.drawable.abdomen, "Triceps","45"),
-        Exercicio("Rotação extera da polia", R.drawable.peito, "Peito","45"),
+        Exercicio("Rotação externa da polia", R.drawable.peito, "Peito","45"),
         Exercicio("Elevação lateral em pé", R.drawable.braco, "Braços","50"),
         Exercicio("Esteira", R.drawable.costas,"costas","60" ),
         Exercicio("Flexão de pernas", R.drawable.todo_corpo,"Gluteos","30" ),

@@ -1,7 +1,8 @@
 package com.example.academia.view
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.activity.OnBackPressedCallback
+import androidx.appcompat.app.AppCompatActivity
 import com.example.academia.databinding.ActivityFinalizarTreinoBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -26,12 +27,18 @@ class FinalizarTreino : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
+        onBackPressedDispatcher.addCallback(this , object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+
+            }
+        })
+
         // recuperarDadosIniciaisUsuarios()
 
-        binding.btnRestart.setOnClickListener {
-            // Navegar de volta para o fragmento de lista de treinos
-            finish()
-        }
+//        binding.btnRestart.setOnClickListener {
+//            // Navegar de volta para o fragmento de lista de treinos
+//            finish()
+//        }
 
         binding.btnFinish.setOnClickListener {
             firebaseAuth.signOut()
@@ -41,36 +48,12 @@ class FinalizarTreino : AppCompatActivity() {
         nomeTreino = intent.getStringExtra("nomeTreino")
 
         val mensagem =
-            " ${nomeTreino ?: "teste"}"
+            " ${nomeTreino ?: ""}"
         binding.displayResult.text = mensagem
 
 
     }
 
-//    private fun recuperarDadosIniciaisUsuarios() {
-//        val idUsuario = firebaseAuth.currentUser?.uid
-//        if (idUsuario != null) {
-//
-//            firestore
-//                .collection("usuarios")
-//                .document(idUsuario)
-//                .get()
-//                .addOnSuccessListener { documentSnapshot ->
-//
-//                    val dadosUsuarios = documentSnapshot.data
-//                    if (dadosUsuarios != null) {
-//
-//                        val nome = dadosUsuarios["nome"] as String
-//
-//                        val mensagem =
-//                            " ${nomeTreino ?: ""}"
-//                        binding.displayResult.text = mensagem
-//
-//                    }
-//
-//                }
-//        }
-//    }
 }
 
 

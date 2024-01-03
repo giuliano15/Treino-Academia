@@ -35,9 +35,14 @@
             app:destination="@id/FirstFragment"
             app:popUpTo="@id/FirstFragment"
             app:popUpToInclusive="true"/>
+
+        <action
+            android:id="@+id/action_SecondFragment_to_container_treino"
+            app:destination="@id/container_treino_list"
+            app:popUpTo="@id/FirstFragment"
+            app:popUpToInclusive="true"/>
+
     </fragment>
-
-
 
     <fragment
         android:id="@+id/container_treino_list"
@@ -59,8 +64,12 @@
             app:popUpToInclusive="true">
         </action>
 
-
-
+        <action
+            android:id="@+id/action_container_treino_list_to_FirstFragment"
+            app:destination="@id/FirstFragment"
+            app:popUpTo="@id/container_treino_list"
+            app:popUpToInclusive="true">
+        </action>
 
     </fragment>
 

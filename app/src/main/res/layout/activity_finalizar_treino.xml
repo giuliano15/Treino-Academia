@@ -57,17 +57,17 @@
             android:textSize="18sp"
             android:textStyle="bold" />
 
-        <Button
-            android:id="@+id/btnRestart"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_alignParentBottom="true"
+<!--        <Button-->
+<!--            android:id="@+id/btnRestart"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_centerInParent="true"-->
+<!--            android:layout_alignParentBottom="true"-->
 
-            android:layout_marginBottom="90dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp"
-            android:text="Reiniciar treino" />
+<!--            android:layout_marginBottom="90dp"-->
+<!--            android:layout_marginStart="30dp"-->
+<!--            android:layout_marginEnd="30dp"-->
+<!--            android:text="Reiniciar treino" />-->
 
         <Button
             android:id="@+id/btnFinish"

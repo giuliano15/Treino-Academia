@@ -34,6 +34,11 @@
     <string name="crucifixo_de_banco_reto">
          trabalha as cabeças esternais dos seus principais músculos peitorais. Além de fortalecer os músculos do peito, também recrutam músculos deltoides, bíceps, tríceps, flexores do punho e braquial
      </string>
+    <string name="flexao_de_pernas">
+         fortifica as panturrilhas.
+     </string>
+
+
     <string name="title_activity_login">LoginActivity</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>

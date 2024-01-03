@@ -1,7 +1,5 @@
 package com.example.ademia.repository
-
 import android.os.Build
-import android.provider.Settings.Global.getString
 import androidx.annotation.RequiresApi
 import com.example.academia.R
 import com.example.academia.model.DetalheExercicio

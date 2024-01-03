@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.academia.databinding.ActivityLoginBinding
+import com.example.academia.util.NetworkUtils
 import com.example.academia.util.exibirMensagem
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
@@ -47,8 +48,10 @@ class LoginActivity : AppCompatActivity() {
             )
         }
         binding.btnLogar.setOnClickListener {
-            if( validarCampos() ){
+            if (validarCampos() && NetworkUtils.isNetworkAvailable(this)) {
                 logarUsuario()
+            } else {
+                exibirMensagem("Sem conexão com a internet")
             }
         }
 

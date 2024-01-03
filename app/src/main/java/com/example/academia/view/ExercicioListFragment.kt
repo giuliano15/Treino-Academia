@@ -3,12 +3,14 @@ package com.example.academia.view
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.activity.addCallback
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
@@ -60,13 +62,13 @@ class ExercicioListFragment : Fragment(), OnExercicioClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //Evita voltar para tela anterior ao clicar no botão voltar do aparelho
+        //Configure eventos ao clicar no botão voltar do aparelho
         //https://developer.android.com/guide/navigation/navigation-custom-back?hl=pt-br
         val callback = requireActivity().onBackPressedDispatcher.addCallback(this) {
-            // Handle the back button event
+            onBackPressed()
         }
 
-        //callback.handleOnBackCancelled()
+       // callback.handleOnBackPressed()
 
         setHasOptionsMenu(true)
 
@@ -74,6 +76,10 @@ class ExercicioListFragment : Fragment(), OnExercicioClickListener {
                 findNavController().navigate(R.id.action_ExercicioListFragment_to_TreinoListFragment)
 
             }
+        binding.buttonCount.setOnClickListener{
+            val intent = Intent(requireContext(),ContadorActivity::class.java)
+            startActivity(intent)
+        }
 
         detalheViewModel = ViewModelProvider(this).get(DetalheExercicioViewModel::class.java)
         exercicioViewModel = ViewModelProvider(this).get(ExercicioViewModel::class.java)
@@ -187,6 +193,28 @@ class ExercicioListFragment : Fragment(), OnExercicioClickListener {
             }
             .create()
             .show()
+    }
+
+    var doubleBackToExitPressedOnce = false
+
+    fun onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            // Chama a função para fechar o aplicativo somente quando doubleBackToExitPressedOnce é true
+            finishApplication()
+        } else {
+            doubleBackToExitPressedOnce = true
+            Toast.makeText(requireContext(), "Pressione novamente para sair", Toast.LENGTH_SHORT).show()
+
+            // Define um temporizador para redefinir doubleBackToExitPressedOnce após um período de 2 segundos
+            Handler().postDelayed({
+                doubleBackToExitPressedOnce = false
+            }, 2000)
+        }
+    }
+
+    fun finishApplication() {
+        // Finaliza a atividade principal e fecha o aplicativo
+        requireActivity().finishAffinity()
     }
 
 }

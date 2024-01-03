@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.addCallback
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -43,6 +44,12 @@ class TreinoListFragment : Fragment(), OnTreinoItemClickListener, OnEditClickLis
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val callback = requireActivity().onBackPressedDispatcher.addCallback(this) {
+
+            findNavController().navigate(R.id.action_container_treino_list_to_FirstFragment)
+            // findNavController().popBackStack()
+        }
 
         // Inicialize o ViewModel e o RecyclerView
         treinoViewModel = ViewModelProvider(requireActivity()).get(TreinoViewModel::class.java)

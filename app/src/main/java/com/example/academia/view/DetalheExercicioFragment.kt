@@ -3,16 +3,21 @@ package com.example.academia.view
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.activity.addCallback
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.academia.R
 import com.example.academia.adapters.TreinoListAdapter
@@ -29,13 +34,16 @@ class DetalhesExercicioFragment() : Fragment() {
     private lateinit var treinoViewModel: TreinoViewModel
     private lateinit var detalheViewModel: DetalheExercicioViewModel
 
+
     private lateinit var treino: Treino
-    private lateinit var treinoListAdapter: TreinoListAdapter
 
     private val binding get() = _binding!!
 
     private lateinit var academiaTimer: Contador
-    private val obs: String? = null
+
+    private var isTimerRunning: Boolean = false
+
+    private var progressTime: Int = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -50,11 +58,8 @@ class DetalhesExercicioFragment() : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        val callback = requireActivity().onBackPressedDispatcher.addCallback(this) {
-//            // Handle the back button event
-//        }
-//
-//        callback.handleOnBackCancelled()
+        val callback = requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, onBackPressedCallback)
+        callback.run {  }
 
 
         val activity = requireActivity() as AppCompatActivity
@@ -86,6 +91,8 @@ class DetalhesExercicioFragment() : Fragment() {
 
         binding.buttonSalvarTempo.setOnClickListener {
 
+            finalizar()
+
             val intent = Intent(requireContext(),FinalizarTreino::class.java)
             intent.putExtra("nomeTreino",treino.nomeTreino)
             startActivity(intent)
@@ -107,12 +114,14 @@ class DetalhesExercicioFragment() : Fragment() {
         val textTime = treino.tempoExercicio
 
         if (textTime != null) {
-            iniciarContador(textTime)
+            val tempoInicialMillis = textTime.toLong() * 1000L
+            progressTime = (tempoInicialMillis).toInt()
+            iniciarContador((progressTime.toLong() / 1000).toString())
         }
 
         val tempoDaLista = textTime  // Substitua isso pelo tempo real da lista
          val tempoFormatado = tempoDaLista?.let { formatarTempo(it) }
-        binding.textTempoRestante.text = tempoDaLista
+        binding.textTempoRestante.text = tempoFormatado
 
         detalheExercicio?.let {
             // Preencher os campos com os dados do exercício
@@ -152,6 +161,8 @@ class DetalhesExercicioFragment() : Fragment() {
                         binding.btnPlay.isEnabled = true
                         binding.btnPause.isEnabled = true
                         binding.btnStop.isEnabled = true
+
+                        isTimerRunning = false
                     }
                 )
 
@@ -163,6 +174,8 @@ class DetalhesExercicioFragment() : Fragment() {
                     // Reativar os botões Pause e Stop
                     binding.btnPause.isEnabled = true
                     binding.btnStop.isEnabled = true
+
+                    isTimerRunning = true
                 }
 
                 binding.btnPause.setOnClickListener {
@@ -172,6 +185,8 @@ class DetalhesExercicioFragment() : Fragment() {
                     // Reativar os botões Play e Stop
                     binding.btnPlay.isEnabled = true
                     binding.btnStop.isEnabled = true
+
+                    isTimerRunning = false
                 }
 
                 val textTime = treino.tempoExercicio
@@ -185,6 +200,8 @@ class DetalhesExercicioFragment() : Fragment() {
                     binding.btnPlay.isEnabled = true
                     binding.btnPause.isEnabled = true
                     binding.btnStop.isEnabled = false
+
+                    isTimerRunning = false
                 }
 
             } catch (e: NumberFormatException) {
@@ -203,6 +220,72 @@ class DetalhesExercicioFragment() : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private  fun finalizar() {
+        if (isTimerRunning) {
+            // O contador está em execução, exibimos o diálogo de confirmação
+            AlertDialog.Builder(requireContext())
+                .setTitle("Confirmação")
+                .setMessage("Deseja realmente sair? Isso finalizará o treino.")
+                .setPositiveButton("Sim") { _, _ ->
+                    academiaTimer.stop()
+                    binding.btnPlay.isEnabled = true
+                    binding.btnStop.isEnabled = true
+                    binding.btnPause.isEnabled = true
+
+                    val intent = Intent(requireContext(), FinalizarTreino::class.java)
+                    intent.putExtra("nomeTreino", treino.nomeTreino)
+                    startActivity(intent)
+                }
+                .setNegativeButton("Cancelar", null)
+                .show()
+        } else {
+            // O contador não está em execução, podemos prosseguir para a próxima tela
+            val intent = Intent(requireContext(), FinalizarTreino::class.java)
+            intent.putExtra("nomeTreino", treino.nomeTreino)
+            startActivity(intent)
+        }
+    }
+
+
+    private fun showExitConfirmationDialog() {
+
+        AlertDialog.Builder(requireContext())
+            .setTitle("Confirmação")
+            .setMessage("Deseja realmente sair? Isso finalizará o treino.")
+            .setPositiveButton("Sim") { _, _ ->
+                academiaTimer.stop()
+                findNavController().navigate(R.id.action_SecondFragment_to_container_treino)
+//                    findNavController().navigate(
+//                        R.id.action_SecondFragment_to_FirstFragment
+//                    )
+            }
+            .setNegativeButton("Cancelar", null)
+            .show()
+    }
+
+
+    private val handler = Handler(Looper.getMainLooper())
+
+    private fun onBackPressedMethod() {
+        if (isTimerRunning) {
+            // Adiar a exibição da dialog para a thread principal
+            handler.post {
+                showExitConfirmationDialog()
+            }
+
+        } else {
+            // Se o contador não estiver em execução, prosseguir para a próxima tela
+            findNavController().navigate(R.id.action_SecondFragment_to_container_treino)
+        }
+    }
+
+
+    private val onBackPressedCallback = object : OnBackPressedCallback(true) {
+        override fun handleOnBackPressed() {
+            onBackPressedMethod()
+        }
     }
 
 }
